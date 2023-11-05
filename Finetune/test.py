@@ -22,7 +22,7 @@ import pandas as pd
 from monai.inferers import sliding_window_inference
 from monai.networks.nets import SwinUNETR
 
-MAP = {
+class_map = {
     0: 'background',
     1: 'lacrimal_glands',
     2: 'parotid_glands',
@@ -124,7 +124,7 @@ def main():
             for i in range(1, args.out_channels):
                 organ_Dice = dice(val_outputs == i, val_labels == i)
                 dice_list_sub.append(organ_Dice)
-                row[MAP[i]] = organ_Dice
+                row[class_map[i]] = organ_Dice
             mean_dice = np.mean(dice_list_sub)
             print("Mean Organ Dice: {}".format(mean_dice))
             dice_list_case.append(mean_dice)
@@ -143,27 +143,10 @@ def main():
 
 
 if __name__ == "__main__":
+
     args = parser.parse_args()
-    args.data_dir = './dataset/eval5/masked_data/'
-    args.json_list = 'masked_data.json'
+    # args.data_dir = './dataset/eval5/masked_data/'
+    # args.json_list = 'masked_data.json'
     args.save = True
-    exp_model = {
-        'test00' : 'train00.pt',
-        'test01' : 'train01.pt',
-        'test1' : 'train1.pt',
-        'test02' : 'train02.pt',
-        'test2' : 'train2.pt',
-        'test03' : 'train03.pt',
-        'test3' : 'train3.pt',
-        'test4' : 'train4.pt'
-    }
-    exp_model_2 = {
-        'test3' : 'train3.pt',
-        'test4' : 'train4.pt'
-    }
-    for exp_name, model_name in exp_model_2.items():
-        print(f'processing {exp_name}')
-        args.exp_name = exp_name
-        args.pretrained_model_name = model_name
-        main()
-        print(50*'-')
+    main()
+
