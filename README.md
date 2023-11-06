@@ -6,6 +6,11 @@ Install dependencies using
 ```python 
 pip install -r requirements.txt
 ```
+# Preprocessing
+Before pretraining and fine-tuning, data (PET and CT) should be preprocessed:
+```python
+python preprocess.py --in_dir=<Input-directory(PET and CT)> --out_dir=<Output-directory>
+```
 # Pre-Training 
 Pre-Train Swin UNETR encoder on unlabeled data
 ```python 
