@@ -31,4 +31,4 @@ python test.py --pretrained_dir=<Pretrained Model Path> --data_dir=<Data-Path> -
 --json_list=<Json List Path> --pretrained_model_name=<Pretrained Model Name> --save 
 ```
 # Acknowledgement
-Models Implantation and SSL Pipeline are based on [MONAI](https://github.com/Project-MONAI/MONAI) and [This](https://github.com/Project-MONAI/research-contributions/tree/main/SwinUNETR) repository. 
+Models implementation and SSL pipeline are based on [MONAI](https://github.com/Project-MONAI/MONAI) and [This](https://github.com/Project-MONAI/research-contributions/tree/main/SwinUNETR) repositories. 
